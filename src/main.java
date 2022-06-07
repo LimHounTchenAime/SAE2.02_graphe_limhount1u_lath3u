@@ -16,5 +16,7 @@ public class main {
         gl.ajouterArc("D","C",10);
         gl.ajouterArc("E","D",43);
 
+
+        System.out.println(gl.toGraphviz());
     }
 }

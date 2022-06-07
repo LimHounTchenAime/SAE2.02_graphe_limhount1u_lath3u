@@ -70,56 +70,6 @@ public class GrapheListe implements Graphe {
         }
     }
 
-    /**
-     * afficher le graphe
-     *
-     * @return chaine
-     */
-    public String toString() {
-        String res = "";
-        List<Arc> suivants;
-        for (int i = 0; i < this.ensNoeuds.size(); i++) {
-            res += this.ensNom.get(i) + " -> ";
-            suivants=this.suivants(this.ensNom.get(i));
-            for (int j = i; j < suivants.size(); j++)
-                res+=suivants.get(j).getDest()+"("+Math.round(suivants.get(j).getCout())+") ";
-            res += "\n";
-
-        }
-        return res;
-    }
-
-    /**
-     * retoune une chaıne representant le graphe
-     * en respectant le format GraphViz
-     *
-     * @return chaine
-     */
-    public String toGraphviz() {
-        String res = "digraph {\n";
-        for (int i = 0; i < this.ensNoeuds.size(); i++) {
-            res += this.ensNom.get(i) + " -> " + this.ensNoeuds.get(i).getNom() + " [label = " + Math.round(this.ensNoeuds.get(i).getAdj().get(0).getCout()) + "]";
-            res += "\n";
-        }
-        res += "}";
-        //Noeud de destination
-        int k = 0;
-        boolean trouveNoeudDestination = false;
-        if (ensNom.size() > 0) {
-            while (!trouveNoeudDestination && k < this.ensNom.size()) {
-                if (Objects.equals(ensNom.get(k), destination)) {
-                    trouveNoeudDestination = true;
-                }
-                k++;
-            }
-        }
-        if(!trouveNoeudDestination){
-            ensNoeuds.add(new Noeud(destination));
-            ensNom.add(destination);
-        }
-
-    }
-
     public String toString() {
         String res = "";
         for (int i = 0; i < this.ensNoeuds.size(); i++)
