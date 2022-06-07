@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class GrapheListe implements Graphe {
-    private List<String> ensNom;
-    private List<Noeud> ensNoeuds;
+    private List<String> ensNom=new ArrayList<String>();
+    private List<Noeud> ensNoeuds=new ArrayList<Noeud>();
 
     /**
      * retourne tous les nœuds du graphe
