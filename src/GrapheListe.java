@@ -40,11 +40,10 @@ public class GrapheListe implements Graphe {
      * @param cout        cout de l'arc
      */
     public void ajouterArc(String depart, String destination, double cout) {
-        //TODO Classe de test ?
+        //Noeud de départ
         boolean trouveNoeudDepart = false;
         int i = 0;
         Noeud n = new Noeud(depart);
-        //Noeud de départ
         //on cherche si le noeud existe deja ou pas
         if (ensNom.size() > 0) {
             while (!trouveNoeudDepart && i < this.ensNom.size()) {
@@ -65,7 +64,7 @@ public class GrapheListe implements Graphe {
             ensNom.add(depart);
         }
 
-        //noeud de destination
+        //Noeud de destination
         int k = 0;
         boolean trouveNoeudDestination = false;
         if (ensNom.size() > 0) {
@@ -89,4 +88,5 @@ public class GrapheListe implements Graphe {
             res += this.ensNom + " -> " + this.ensNoeuds.get(i).getNom() + "(" + this.ensNoeuds.get(i);
         return res;
     }
+
 }
