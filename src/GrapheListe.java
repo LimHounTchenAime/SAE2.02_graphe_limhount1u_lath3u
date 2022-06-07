@@ -68,6 +68,21 @@ public class GrapheListe implements Graphe {
             ensNoeuds.add(n);
             ensNom.add(depart);
         }
+        //Noeud de destination
+        int k = 0;
+        boolean trouveNoeudDestination = false;
+        if (ensNom.size() > 0) {
+            while (!trouveNoeudDestination && k < this.ensNom.size()) {
+                if (Objects.equals(ensNom.get(k), destination)) {
+                    trouveNoeudDestination = true;
+                }
+                k++;
+            }
+        }
+        if(!trouveNoeudDestination){
+            ensNoeuds.add(new Noeud(destination));
+            ensNom.add(destination);
+        }
     }
 
     /**
@@ -88,6 +103,7 @@ public class GrapheListe implements Graphe {
         }
         return res;
     }
+
 
         /**
          * retoune une chaıne representant le graphe
