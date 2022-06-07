@@ -48,9 +48,14 @@ public class Noeud {
      * @param cout cout du noeud
      */
     public void ajouterArc(String destination,double cout){
-        adj.add(new Arc(destination, cout));
+        this.adj.add(new Arc(destination, cout));
     }
 
-
-
+    /**
+     * retourne la liste d'arcs
+     * @return liste d'arcs
+     */
+    public List<Arc> getAdj(){
+        return this.adj;
+    }
 }

@@ -13,4 +13,16 @@ public class Arc {
         if (cout > 0)
             this.cout = cout;
     }
+
+    /**
+     * renvoie le cout de l'arc
+     * @return cout
+     */
+    public double getCout(){
+        return this.cout;
+    }
+
+    public String getDest(){
+        return this.dest;
+    }
 }
