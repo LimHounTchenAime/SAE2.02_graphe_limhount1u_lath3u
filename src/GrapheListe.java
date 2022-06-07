@@ -2,12 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GrapheListe implements Graphe {
-    private List<String> ensNom=new ArrayList<String>();
-    private List<Noeud> ensNoeuds=new ArrayList<Noeud>();
+    private List<String> ensNom = new ArrayList<String>();
+    private List<Noeud> ensNoeuds = new ArrayList<Noeud>();
 
     /**
      * retourne tous les nœuds du graphe
-     * @return noeuds du graphe
+     *
+     * @return
      */
     public List<String> listeNoeuds() {
         return this.ensNom;
@@ -16,6 +17,7 @@ public class GrapheListe implements Graphe {
     /**
      * retourne la liste des arcs partant
      * du nœud n passe en parametre
+     *
      * @param n noeud n
      * @return liste des arcs
      */
@@ -27,19 +29,23 @@ public class GrapheListe implements Graphe {
     /**
      * ajouter des nœuds et des
      * arcs `a un objet de type GrapheListe
-     * @param depart nom du noeud de depart
+     *
+     * @param depart      nom du noeud de depart
      * @param destination nom du noeud d'arrivee
-     * @param cout cout de l'arc
+     * @param cout        cout de l'arc
      */
     public void ajouterArc(String depart, String destination, double cout) {
-        this.ensNom.add(depart);
-        this.ensNoeuds.get(this.ensNoeuds.size()).ajouterArc(destination, cout);
+        //TODO Classe de test ?
+        Noeud n = new Noeud("Depart");
+        n.ajouterArc(destination, cout);
+        ensNom.add(depart);
+        ensNoeuds.add(n);
     }
 
-    public String toString(){
-        String res="";
-        for (int i=0;i<this.ensNoeuds.size();i++)
-            res+=this.ensNom+" -> "+this.ensNoeuds.get(i).getNom()+"("+this.ensNoeuds.get(i);
+    public String toString() {
+        String res = "";
+        for (int i = 0; i < this.ensNoeuds.size(); i++)
+            res += this.ensNom + " -> " + this.ensNoeuds.get(i).getNom() + "(" + this.ensNoeuds.get(i);
         return res;
     }
 }
