@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Noeud {
@@ -6,7 +7,7 @@ public class Noeud {
 
     Noeud(String nom) {
         this.nom = nom;
-        this.adj = new List<Arc>();
+        this.adj = new ArrayList<Arc>();
 
     }
 
@@ -22,5 +23,7 @@ public class Noeud {
     public void ajouterArc(String destination,double cout){
         adj.add(new Arc(destination, cout));
     }
+
+
 
 }
