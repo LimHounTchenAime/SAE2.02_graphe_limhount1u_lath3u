@@ -7,6 +7,10 @@ public class Noeud {
     private String nom;
     private List<Arc> adj;
 
+    public List<Arc> getAdj() {
+        return adj;
+    }
+
     /**
      *  constructeur prenant en parametre le nom du nœud
      * et initialisant la liste adj `a une liste vide
