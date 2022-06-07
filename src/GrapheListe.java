@@ -1,9 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GrapheListe implements Graphe {
     private List<String> ensNom = new ArrayList<String>();
     private List<Noeud> ensNoeuds = new ArrayList<Noeud>();
+
+    public List<Noeud> getEnsNoeuds() {
+        return ensNoeuds;
+    }
 
     /**
      * retourne tous les nœuds du graphe
@@ -36,21 +41,22 @@ public class GrapheListe implements Graphe {
      */
     public void ajouterArc(String depart, String destination, double cout) {
         //TODO Classe de test ?
-        boolean trouve = false;
+        boolean trouveNoeudDepart = false;
         int i = 0;
-        Noeud n = new Noeud("Depart");
+        Noeud n = new Noeud(depart);
+        //Noeud de départ
         //on cherche si le noeud existe deja ou pas
-        if(ensNom.size()>0) {
-            while (!trouve && i < this.ensNom.size()) {
-                if (ensNom.get(i).equals(n)) {
-                    trouve = true;
+        if (ensNom.size() > 0) {
+            while (!trouveNoeudDepart && i < this.ensNom.size()) {
+                if (Objects.equals(ensNom.get(i), n.getNom())) {
+                    trouveNoeudDepart = true;
                 }
                 i++;
             }
         }
-        if (trouve) {
+        if (trouveNoeudDepart) {
             //Si trouve on recupere le noeud existant et on ajoute l'arc au noeud
-            n = ensNoeuds.get(i);
+            n = ensNoeuds.get(i - 1);
             n.ajouterArc(destination, cout);
         } else {
             //si le noeud existe pas on ajoute le noeud aux listes
@@ -59,45 +65,28 @@ public class GrapheListe implements Graphe {
             ensNom.add(depart);
         }
 
+        //noeud de destination
+        int k = 0;
+        boolean trouveNoeudDestination = false;
+        if (ensNom.size() > 0) {
+            while (!trouveNoeudDestination && k < this.ensNom.size()) {
+                if (Objects.equals(ensNom.get(k), destination)) {
+                    trouveNoeudDestination = true;
+                }
+                k++;
+            }
+        }
+        if(!trouveNoeudDestination){
+            ensNoeuds.add(new Noeud(destination));
+            ensNom.add(destination);
+        }
 
     }
 
-    /**
-     * afficher le graphe
-     * @return chaine
-     */
-    public String toString(){
-        String res="";
-        for(int i=0;i<this.ensNoeuds.size();i++) {
-            res += this.ensNom.get(i) + " -> ";
-            for (int j=0;j<this.ensNoeuds.size();j++)
-                res+=this.ensNoeuds.get(j).getAdj().get(0).getDest()+" "+this.ensNoeuds.get(j).getAdj().get(0).getCout();
-            res+="\n";
-        }
+    public String toString() {
+        String res = "";
+        for (int i = 0; i < this.ensNoeuds.size(); i++)
+            res += this.ensNom + " -> " + this.ensNoeuds.get(i).getNom() + "(" + this.ensNoeuds.get(i);
         return res;
-    }
-
-    /**
-     * retoune une chaıne representant le graphe
-     * en respectant le format GraphViz
-     * @return chaine
-     */
-    public String toGraphviz() {
-        String res = "digraph {\n";
-        for (int i = 0; i < this.ensNoeuds.size(); i++) {
-            res += this.ensNom.get(i) + " -> " + this.ensNoeuds.get(i).getNom() + " [label = " + Math.round(this.ensNoeuds.get(i).getAdj().get(0).getCout())+"]";
-            res+="\n";
-        }
-        res+="}";
-        return res;
-    }
-
-    public String toGraphViz() {
-        String s = "";
-        s += "digraph {\n";
-        for (int i = 0; i < this.listeNoeuds().size(); i++) {
-        }
-        return s;
-
     }
 }
