@@ -28,7 +28,12 @@ public class GrapheListe implements Graphe {
      */
     public List<Arc> suivants(String n) {
         //TODO
-        throw new Error("Todo");
+        List<Arc> res=new ArrayList<Arc>();
+        for(int i=0;i<this.ensNoeuds.size();i++)
+            if(this.ensNoeuds.get(i).equals(n))
+                for(int j=0;j<this.ensNoeuds.get(i).getAdj().size();j++)
+                res.add(this.ensNoeuds.get(i).getAdj().get(j));
+        return res;
     }
 
     /**
@@ -63,7 +68,40 @@ public class GrapheListe implements Graphe {
             ensNoeuds.add(n);
             ensNom.add(depart);
         }
+    }
 
+    /**
+     * afficher le graphe
+     *
+     * @return chaine
+     */
+    public String toString() {
+        String res = "";
+        List<Arc> suivants;
+        for (int i = 0; i < this.ensNoeuds.size(); i++) {
+            res += this.ensNom.get(i) + " -> ";
+            suivants=this.suivants(this.ensNom.get(i));
+            for (int j = i; j < suivants.size(); j++)
+                res+=suivants.get(j).getDest()+"("+Math.round(suivants.get(j).getCout())+") ";
+            res += "\n";
+
+        }
+        return res;
+    }
+
+    /**
+     * retoune une chaıne representant le graphe
+     * en respectant le format GraphViz
+     *
+     * @return chaine
+     */
+    public String toGraphviz() {
+        String res = "digraph {\n";
+        for (int i = 0; i < this.ensNoeuds.size(); i++) {
+            res += this.ensNom.get(i) + " -> " + this.ensNoeuds.get(i).getNom() + " [label = " + Math.round(this.ensNoeuds.get(i).getAdj().get(0).getCout()) + "]";
+            res += "\n";
+        }
+        res += "}";
         //Noeud de destination
         int k = 0;
         boolean trouveNoeudDestination = false;
@@ -89,4 +127,19 @@ public class GrapheListe implements Graphe {
         return res;
     }
 
+        /**
+         * retoune une chaıne representant le graphe
+         * en respectant le format GraphViz
+         *
+         * @return chaine
+         */
+        public String toGraphviz() {
+            String res = "digraph {\n";
+            for (int i = 0; i < this.ensNoeuds.size(); i++) {
+                res += this.ensNom.get(i) + " -> " + this.ensNoeuds.get(i).getNom() + " [label = " + Math.round(this.ensNoeuds.get(i).getAdj().get(0).getCout()) + "]";
+                res += "\n";
+            }
+            res += "}";
+            return res;
+        }
 }
