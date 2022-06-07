@@ -17,6 +17,6 @@ public class GrapheListe implements Graphe {
     }
 
     public void ajouterArc(String depart, String destination, double cout) {
-
+        this.ensNoeuds.get(this.ensNoeuds.size()).ajouterArc(depart, cout);
     }
 }
