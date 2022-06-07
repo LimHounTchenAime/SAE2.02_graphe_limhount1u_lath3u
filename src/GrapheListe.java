@@ -36,16 +36,39 @@ public class GrapheListe implements Graphe {
      */
     public void ajouterArc(String depart, String destination, double cout) {
         //TODO Classe de test ?
-        Noeud n = new Noeud("Depart");
+        Noeud n = new Noeud(destination);
         n.ajouterArc(destination, cout);
         ensNom.add(depart);
         ensNoeuds.add(n);
     }
 
-    public String toString() {
-        String res = "";
-        for (int i = 0; i < this.ensNoeuds.size(); i++)
-            res += this.ensNom + " -> " + this.ensNoeuds.get(i).getNom() + "(" + this.ensNoeuds.get(i);
+    /**
+     * afficher le graphe
+     * @return chaine
+     */
+    public String toString(){
+        String res="";
+        for(int i=0;i<this.ensNoeuds.size();i++) {
+            res += this.ensNom.get(i) + " -> ";
+            for (int j=0;j<this.ensNoeuds.size();j++)
+                res+=this.ensNoeuds.get(j).getAdj().get(0).getDest()+" "+this.ensNoeuds.get(j).getAdj().get(0).getCout();
+            res+="\n";
+        }
+        return res;
+    }
+
+    /**
+     * retoune une chaıne representant le graphe
+     * en respectant le format GraphViz
+     * @return chaine
+     */
+    public String toGraphviz() {
+        String res = "digraph {\n";
+        for (int i = 0; i < this.ensNoeuds.size(); i++) {
+            res += this.ensNom.get(i) + " -> " + this.ensNoeuds.get(i).getNom() + " [label = " + Math.round(this.ensNoeuds.get(i).getAdj().get(0).getCout())+"]";
+            res+="\n";
+        }
+        res+="}";
         return res;
     }
 }
