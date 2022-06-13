@@ -28,11 +28,11 @@ public class GrapheListe implements Graphe {
      */
     public List<Arc> suivants(String n) {
         //TODO
-        List<Arc> res=new ArrayList<Arc>();
-        for(int i=0;i<this.ensNoeuds.size();i++)
-            if(this.ensNoeuds.get(i).equals(n))
-                for(int j=0;j<this.ensNoeuds.get(i).getAdj().size();j++)
-                res.add(this.ensNoeuds.get(i).getAdj().get(j));
+        List<Arc> res = new ArrayList<Arc>();
+        for (int i = 0; i < this.ensNoeuds.size(); i++)
+            if (this.ensNoeuds.get(i).getNom().equals(n))
+                for (int j = 0; j < this.ensNoeuds.get(i).getAdj().size(); j++)
+                    res.add(this.ensNoeuds.get(i).getAdj().get(j));
         return res;
     }
 
@@ -79,7 +79,7 @@ public class GrapheListe implements Graphe {
                 k++;
             }
         }
-        if(!trouveNoeudDestination){
+        if (!trouveNoeudDestination) {
             ensNoeuds.add(new Noeud(destination));
             ensNom.add(destination);
         }
@@ -95,9 +95,9 @@ public class GrapheListe implements Graphe {
         List<Arc> suivants;
         for (int i = 0; i < this.ensNoeuds.size(); i++) {
             res += this.ensNom.get(i) + " -> ";
-            suivants=this.suivants(this.ensNom.get(i));
+            suivants = this.suivants(this.ensNom.get(i));
             for (int j = i; j < suivants.size(); j++)
-                res+=suivants.get(j).getDest()+"("+Math.round(suivants.get(j).getCout())+") ";
+                res += suivants.get(j).getDest() + "(" + Math.round(suivants.get(j).getCout()) + ") ";
             res += "\n";
 
         }
@@ -105,19 +105,23 @@ public class GrapheListe implements Graphe {
     }
 
 
-        /**
-         * retoune une chaıne representant le graphe
-         * en respectant le format GraphViz
-         *
-         * @return chaine
-         */
-        public String toGraphviz() {
-            String res = "digraph {\n";
-            for (int i = 0; i < this.ensNoeuds.size(); i++) {
-                res += this.ensNom.get(i) + " -> " + this.ensNoeuds.get(i).getNom() + " [label = " + Math.round(this.ensNoeuds.get(i).getAdj().get(0).getCout()) + "]";
+    /**
+     * retourne une chaîne représentant le graphe
+     * en respectant le format GraphViz
+     *
+     * @return chaine
+     */
+    public String toGraphviz() {
+        String res = "digraph {\n";
+        for (int i = 0; i < this.ensNoeuds.size(); i++) {
+            for(int k = 0; k < this.suivants(ensNom.get(i)).size();k++){
+            res += this.ensNom.get(i) + " -> " + this.suivants(ensNom.get(i)).get(k).getDest()  + " [label = " + (int) this.suivants(ensNom.get(i)).get(k).getCout()+"]";
                 res += "\n";
             }
-            res += "}";
-            return res;
         }
+        res += "}";
+
+        return res;
+    }
+
 }

@@ -16,13 +16,14 @@ public class Arc {
 
     /**
      * renvoie le cout de l'arc
+     *
      * @return cout
      */
-    public double getCout(){
+    public double getCout() {
         return this.cout;
     }
 
-    public String getDest(){
+    public String getDest() {
         return this.dest;
     }
 }
