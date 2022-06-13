@@ -16,5 +16,10 @@ public class main {
         GrapheListe grapheListe=new GrapheListe("graphes/test1.txt");
         System.out.println(grapheListe.toGraphviz());
         System.out.println(grapheListe.toString());
+
+        // test methode resoudre
+        BellmanFord bellmanFord = new BellmanFord();
+        Valeur v = bellmanFord.resoudre(gl,"C");
+
     }
 }

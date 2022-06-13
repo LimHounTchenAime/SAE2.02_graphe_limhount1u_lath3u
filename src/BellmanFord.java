@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class BellmanFord {
 
 
@@ -6,20 +8,23 @@ public class BellmanFord {
         //initialisation
         for (int i = 0; i < g.listeNoeuds().size(); i++) {
             v.setValeur(g.listeNoeuds().get(i), Double.MAX_VALUE);
+            v.setParent(g.listeNoeuds().get(i),null);
         }
         v.setValeur(depart, 0);
 
-        for (int i = 0; i < g.listeNoeuds().size(); i++) {
+        List<String> sommets = g.listeNoeuds();
+        for (int i = 0; i < sommets.size(); i++) {
             //successeur du noeuds
-            for (int k = 0; k < g.suivants(g.listeNoeuds().get(i)).size(); k++) {
-                String u = g.listeNoeuds().get(i);
-                String parent = v.getParent(u);
+            for (int k = 0; k < g.suivants(sommets.get(i)).size(); k++) {
+                String u_sommet = g.listeNoeuds().get(i);
+                String v_sommet = g.suivants(sommets.get(i)).get(k).getDest();
                 double arc_uv = g.suivants(g.listeNoeuds().get(i)).get(k).getCout();
-                double tmp = v.getValeur(u) + arc_uv;
-                if (tmp < v.getValeur(parent)) {
-                    v.setValeur(parent, tmp);
-                    v.setParent(parent, u);
-                }
+                double tmp = v.getValeur(u_sommet) + arc_uv;
+                    if (tmp < v.getValeur(v_sommet)) {
+                        v.setValeur(v_sommet, tmp);
+                        v.setParent(v_sommet, u_sommet);
+                    }
+
             }
         }
 
