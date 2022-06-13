@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -5,6 +6,40 @@ import java.util.Objects;
 public class GrapheListe implements Graphe {
     private List<String> ensNom = new ArrayList<String>();
     private List<Noeud> ensNoeuds = new ArrayList<Noeud>();
+
+    public GrapheListe(){
+    }
+
+    /**
+     * construit un graphe a partir d'un nom de fichier
+     * @param nom
+     */
+    public GrapheListe(String nom){
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(nom));
+            String line;
+            while((line = bufferedReader.readLine()) != null) {
+
+
+                String poids="";
+
+                int i = 4;
+                while (i < line.length()) {
+                    poids+=line.charAt(i);
+                    i++;
+                }
+
+                ajouterArc(Character.toString(line.charAt(0)), Character.toString(line.charAt(2)), Double.parseDouble(poids));
+
+            }
+        }
+        catch (FileNotFoundException fileNotFoundException){
+            System.out.println("fichier introuvable");
+        }
+        catch (IOException ioException){
+
+        }
+    }
 
     public List<Noeud> getEnsNoeuds() {
         return ensNoeuds;

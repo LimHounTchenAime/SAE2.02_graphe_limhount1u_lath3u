@@ -19,15 +19,6 @@ public class Noeud {
     }
 
     /**
-     * retourne le nom du noeud
-     *
-     * @return nom du noeud
-     */
-    public String getNom() {
-        return nom;
-    }
-
-    /**
      * specifie que deux nœuds sont egaux
      * si et seulement si leurs noms sont ´egaux
      *
@@ -36,7 +27,7 @@ public class Noeud {
      */
     public boolean equals(Object o) {
         Noeud n = (Noeud) o;
-        return this.nom.equals(n.getNom());
+        return this.nom.equals(n.nom);
     }
 
     /**
@@ -57,5 +48,9 @@ public class Noeud {
      */
     public List<Arc> getAdj() {
         return this.adj;
+    }
+
+    public String getNom(){
+        return nom;
     }
 }
