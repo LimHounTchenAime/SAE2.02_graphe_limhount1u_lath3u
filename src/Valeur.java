@@ -1,7 +1,7 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.List;
 
 /**
  * Classe fournie, permet de stocker des valeurs associées au noeud et des parents
@@ -88,4 +88,16 @@ public class Valeur {
 
     }
 
+    //à faire
+    public List<String> calculerChemin(String destination) {
+        List<String> chemain = new ArrayList<String>();
+        chemain.add(destination);
+        //tant que le parent de la destination existe
+        while (this.getParent(destination) != null) {
+            //on ajoute le parent à la liste
+            chemain.add(0,this.getParent(destination));
+            destination = this.getParent(destination);
+        }
+        return chemain;
+    }
 }

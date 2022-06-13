@@ -22,5 +22,6 @@ public class main {
         //cas
         Valeur v = bellmanFord.resoudre(gl,"A");
         System.out.println(v.toString());
+        System.out.println(v.calculerChemin("C"));
     }
 }
