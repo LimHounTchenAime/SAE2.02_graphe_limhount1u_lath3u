@@ -127,14 +127,14 @@ public class GrapheListe implements Graphe {
      */
     public String toString() {
         String res = "";
-        List<Arc> suivants;
         for (int i = 0; i < this.ensNoeuds.size(); i++) {
+            //on récupère tous les suivants de chaque noeuds avec leurs coûts
             res += this.ensNom.get(i) + " -> ";
-            suivants = this.suivants(this.ensNom.get(i));
-            for (int j = i; j < suivants.size(); j++)
-                res += suivants.get(j).getDest() + "(" + Math.round(suivants.get(j).getCout()) + ") ";
+            for (int k = 0; k < this.suivants(ensNom.get(i)).size(); k++) {
+                res += this.suivants(ensNom.get(i)).get(k).getDest() + "(" + (int) this.suivants(ensNom.get(i)).get(k).getCout() + ")";
+                res += " ";
+            }
             res += "\n";
-
         }
         return res;
     }
@@ -148,9 +148,11 @@ public class GrapheListe implements Graphe {
      */
     public String toGraphviz() {
         String res = "digraph {\n";
+        //on récupère tous les noeuds du graphes
         for (int i = 0; i < this.ensNoeuds.size(); i++) {
-            for(int k = 0; k < this.suivants(ensNom.get(i)).size();k++){
-            res += this.ensNom.get(i) + " -> " + this.suivants(ensNom.get(i)).get(k).getDest()  + " [label = " + (int) this.suivants(ensNom.get(i)).get(k).getCout()+"]";
+            //on récupère tous les suivants de chaque noeuds avec leurs coûts
+            for (int k = 0; k < this.suivants(ensNom.get(i)).size(); k++) {
+                res += this.ensNom.get(i) + " -> " + this.suivants(ensNom.get(i)).get(k).getDest() + " [label = " + (int) this.suivants(ensNom.get(i)).get(k).getCout() + "]";
                 res += "\n";
             }
         }
