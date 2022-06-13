@@ -18,5 +18,5 @@ fonction pointFixe(G InOut:Graphe, depart:Noeud)
     fin
 
 LEXIQUE:
-G : Graphe, graphe orienté avec une pondération positive des arcs
+G : Graphe, graphe orienté avec poids positive des arcs
 depart : Noeud, un sommet de G

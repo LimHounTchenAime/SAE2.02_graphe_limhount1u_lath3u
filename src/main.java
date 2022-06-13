@@ -19,7 +19,8 @@ public class main {
 
         // test methode resoudre
         BellmanFord bellmanFord = new BellmanFord();
-        Valeur v = bellmanFord.resoudre(gl,"C");
-
+        //cas
+        Valeur v = bellmanFord.resoudre(gl,"A");
+        System.out.println(v.toString());
     }
 }
