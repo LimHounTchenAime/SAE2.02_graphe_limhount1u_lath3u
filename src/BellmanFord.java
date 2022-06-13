@@ -24,16 +24,16 @@ public class BellmanFord {
                 String sommet_u = g.listeNoeuds().get(i);
                 //pour chaque arc du sommet u
                 for (int k = 0; k < g.suivants(sommet_u).size(); k++) {
-                    //sommet_v est un des sucesseurs de sommet_u
+                    //sommet_v est un des parents de sommet_u
                     String sommet_v = g.suivants(sommet_u).get(k).getDest();
                     //on prend la valeur d'un des arcs partant de u
-                    double arc_uv = g.suivants(sommet_u).get(k).getCout();
+                    double cout_arc_uv = g.suivants(sommet_u).get(k).getCout();
                     //on prend la valeur de sommet_u(antécédent de sommet_v) + le coût de l'arc(u,v)
-                    double tmp = v.getValeur(sommet_u) + arc_uv;
+                    double tmp = v.getValeur(sommet_u) + cout_arc_uv;
                     //si la nouvelle distance est meilleur que la valeur de sommet_v
                     if (tmp < v.getValeur(sommet_v)) {
                         v.setValeur(sommet_v, tmp);
-                        //on met en sommet_u antécedent de sommet_v
+                        //on met en parent le sommet_u
                         v.setParent(sommet_v, sommet_u);
                     }
 

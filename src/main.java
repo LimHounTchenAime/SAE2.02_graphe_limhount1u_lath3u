@@ -11,9 +11,8 @@ public class main {
         gl.ajouterArc("D", "B", 23);
         gl.ajouterArc("E", "D", 43);
 
-        System.out.println(gl.suivants("A").get(0).getDest());
+        System.out.println(gl.suivants("D").get(0).getDest());
         System.out.println(gl.toGraphviz());
-        //TODO à regarder
         GrapheListe grapheListe=new GrapheListe("graphes/test1.txt");
         System.out.println(grapheListe.toString());
 
