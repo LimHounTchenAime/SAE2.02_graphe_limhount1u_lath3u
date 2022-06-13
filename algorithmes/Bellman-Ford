@@ -6,17 +6,22 @@ fonction pointFixe(G InOut:Graphe, depart:Noeud)
         fpour
         depart.distance <- 0
 
-        pour chaque sommet v de G faire
-            pour chaque arc (u, v) de G faire
-                tmp <- u.distance + poids(u, v)
-                si tmp < v.distance alors
-                    v.distance <- tmp
-                    v.précédent <- u
-                fsi
-        fpour
-
+        cpt <- 0
+        tant que non pointfixe et cpt<nbSommets faire
+            pour chaque sommet v de G faire
+                pour chaque arc (u, v) de G faire
+                    tmp <- u.distance + poids(u, v)
+                    si tmp < v.distance alors
+                        v.distance <- tmp
+                        v.précédent <- u
+                    fsi
+                fpour
+            fpour
+        ftant
     fin
 
 LEXIQUE:
 G : Graphe, graphe orienté avec poids positive des arcs
 depart : Noeud, un sommet de G
+cpt : entier, nombre d'itérations
+nbSommets : entier, nombre de sommets du graphe G
