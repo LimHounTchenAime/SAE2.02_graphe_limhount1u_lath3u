@@ -1,10 +1,6 @@
 public class main {
     public static void main(String[] args) {
-        Noeud a = new Noeud("A");
-        Noeud b = new Noeud("B");
-        Noeud c = new Noeud("C");
-        Noeud d = new Noeud("D");
-        Noeud e = new Noeud("E");
+
 
         GrapheListe gl = new GrapheListe();
         gl.ajouterArc("A", "B", 12);
