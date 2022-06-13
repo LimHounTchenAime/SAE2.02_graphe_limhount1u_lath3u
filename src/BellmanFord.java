@@ -16,11 +16,9 @@ public class BellmanFord {
         List<String> sommets = g.listeNoeuds();
         //pour chaque sommets
         for (int j = 0 ; j< sommets.size();j++) {
-
-
+            //pour chaque arcs
             for (int i = 0; i < sommets.size(); i++) {
                 String u_sommet = g.listeNoeuds().get(i);
-                //pour chaque arcs
                 for (int k = 0; k < g.suivants(u_sommet).size(); k++) {
                     //v_sommet est un des parents de u_sommet
                     String v_sommet = g.suivants(u_sommet).get(k).getDest();
