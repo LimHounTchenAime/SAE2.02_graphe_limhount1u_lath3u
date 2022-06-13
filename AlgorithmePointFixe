@@ -1,3 +1,0 @@
-fonction pointFixe(Graphe g InOut,Noeud depart):
-    valeur(depart) <- 0
-    pour i allant de 0 à tailleDe_g - 1 faire

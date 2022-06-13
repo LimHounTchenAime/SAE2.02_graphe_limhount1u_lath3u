@@ -21,20 +21,24 @@ public class BellmanFord {
             vtmp = v.toString();
             //pour chaque sommet
             for (int i = 0; i < sommets.size(); i++) {
-                String u_sommet = g.listeNoeuds().get(i);
+                String sommet_u = g.listeNoeuds().get(i);
                 //pour chaque arc du sommet u
-                for (int k = 0; k < g.suivants(u_sommet).size(); k++) {
-                    //v_sommet est un des parents de u_sommet
-                    String v_sommet = g.suivants(u_sommet).get(k).getDest();
-                    //arc(u,v)
-                    double arc_uv = g.suivants(u_sommet).get(k).getCout();
-                    double tmp = v.getValeur(u_sommet) + arc_uv;
-                    //si la nouvelle distance est meilleur que la valeur de v_sommet
-                    if (tmp < v.getValeur(v_sommet)) {
-                        v.setValeur(v_sommet, tmp);
-                        v.setParent(v_sommet, u_sommet);
+                for (int k = 0; k < g.suivants(sommet_u).size(); k++) {
+                    //sommet_v est un des sucesseurs de sommet_u
+                    String sommet_v = g.suivants(sommet_u).get(k).getDest();
+                    //on prend la valeur d'un des arcs partant de u
+                    double arc_uv = g.suivants(sommet_u).get(k).getCout();
+                    //on prend la valeur de sommet_u(antécédent de sommet_v) + le coût de l'arc(u,v)
+                    double tmp = v.getValeur(sommet_u) + arc_uv;
+                    //si la nouvelle distance est meilleur que la valeur de sommet_v
+                    if (tmp < v.getValeur(sommet_v)) {
+                        v.setValeur(sommet_v, tmp);
+                        //on met en sommet_u antécedent de sommet_v
+                        v.setParent(sommet_v, sommet_u);
                     }
+
                 }
+
             }
             cpt++;
         }
