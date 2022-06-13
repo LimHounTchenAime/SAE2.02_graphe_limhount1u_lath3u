@@ -4,7 +4,7 @@ fonction pointFixe(G InOut:Graphe, depart:Noeud)
             v.distance <- infini
             v.précédent <- indéfini
         fpour
-        s.distance <- 0
+        depart.distance <- 0
 
         pour chaque sommet v de G faire
             pour chaque arc (u, v) de G faire
