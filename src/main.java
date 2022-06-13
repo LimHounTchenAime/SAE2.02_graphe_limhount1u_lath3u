@@ -16,5 +16,8 @@ public class main {
         gl.ajouterArc("E", "D", 43);
 
         System.out.println(gl.toGraphviz());
+
+        GrapheListe grapheListe=new GrapheListe("graphes/test1.txt");
+        System.out.println(grapheListe.toGraphviz());
     }
 }
