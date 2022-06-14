@@ -2,7 +2,12 @@ import java.util.List;
 
 public class BellmanFord implements Algorithme{
 
-
+    /**
+     *
+     * @param g graphe
+     * @param depart point de départ
+     * @return retourne un objet Valeur contenant les valeurs de chaque point selon l'algorithme de BellmanFord
+     */
     public Valeur resoudre(Graphe g, String depart) {
         Valeur v = new Valeur();
 

@@ -97,14 +97,14 @@ public class Valeur {
      */
     //à faire
     public List<String> calculerChemin(String destination) {
-        List<String> chemain = new ArrayList<String>();
-        chemain.add(destination);
+        List<String> chemin = new ArrayList<String>();
+        chemin.add(destination);
         //tant que le parent de la destination existe
         while (this.getParent(destination) != null) {
             //on ajoute le parent à la liste
-            chemain.add(0, this.getParent(destination));
+            chemin.add(0, this.getParent(destination));
             destination = this.getParent(destination);
         }
-        return chemain;
+        return chemin;
     }
 }
