@@ -1,4 +1,4 @@
-public class Dijkstra {
+public class Dijkstra implements Algorithme {
     public Valeur resoudre(Graphe g, String depart) {
         Valeur v = new Valeur();
 

@@ -1,4 +1,7 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -7,36 +10,35 @@ public class GrapheListe implements Graphe {
     private List<String> ensNom = new ArrayList<String>();
     private List<Noeud> ensNoeuds = new ArrayList<Noeud>();
 
-    public GrapheListe(){
+    public GrapheListe() {
     }
 
     /**
      * construit un graphe a partir d'un nom de fichier
+     *
      * @param nom
      */
-    public GrapheListe(String nom){
+    public GrapheListe(String nom) {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(nom));
             String line;
-            while((line = bufferedReader.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
 
 
-                String poids="";
+                String poids = "";
 
                 int i = 4;
                 while (i < line.length()) {
-                    poids+=line.charAt(i);
+                    poids += line.charAt(i);
                     i++;
                 }
 
                 ajouterArc(Character.toString(line.charAt(0)), Character.toString(line.charAt(2)), Double.parseDouble(poids));
 
             }
-        }
-        catch (FileNotFoundException fileNotFoundException){
+        } catch (FileNotFoundException fileNotFoundException) {
             System.out.println("fichier introuvable");
-        }
-        catch (IOException ioException){
+        } catch (IOException ioException) {
 
         }
     }

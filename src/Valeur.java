@@ -88,6 +88,13 @@ public class Valeur {
 
     }
 
+    /**
+     * Retourne le chemin allant à la destination. Les valeurs doivent être initialisées avec un point de départ à
+     * l'aide de la méthode Valeur resoudre(Graphe g,String depart).
+     *
+     * @param destination
+     * @return une liste contenant le chemin le plus court
+     */
     //à faire
     public List<String> calculerChemin(String destination) {
         List<String> chemain = new ArrayList<String>();
@@ -95,7 +102,7 @@ public class Valeur {
         //tant que le parent de la destination existe
         while (this.getParent(destination) != null) {
             //on ajoute le parent à la liste
-            chemain.add(0,this.getParent(destination));
+            chemain.add(0, this.getParent(destination));
             destination = this.getParent(destination);
         }
         return chemain;

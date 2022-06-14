@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class BellmanFord {
+public class BellmanFord implements Algorithme{
 
 
     public Valeur resoudre(Graphe g, String depart) {
@@ -25,7 +25,7 @@ public class BellmanFord {
                 String sommet_u = g.listeNoeuds().get(i);
                 //pour chaque arc du sommet_u
                 for (int k = 0; k < g.suivants(sommet_u).size(); k++) {
-                    //sommet_v est un des sucesseurs du sommet_u
+                    //sommet_u est un antécédent de sommet_v
                     String sommet_v = g.suivants(sommet_u).get(k).getDest();
                     //on prend la valeur d'un des arcs partant de u
                     double cout_arc_uv = g.suivants(sommet_u).get(k).getCout();

@@ -70,5 +70,5 @@ class GrapheListeTest {
 
         assertEquals(res, gl.toString());
     }
-//TODO methodre calculer chemain,methode resoudre bellman-ford
+//TODO methodre calculer chemin,methode resoudre bellman-ford
 }
