@@ -16,11 +16,7 @@ public class main {
         GrapheListe grapheListe=new GrapheListe("graphes/test1.txt");
         System.out.println(grapheListe.toString());
 
-        // test methode resoudre
-        BellmanFord bellmanFord = new BellmanFord();
-        //cas
-        Valeur v = bellmanFord.resoudre(gl,"A");
-        System.out.println(v.toString());
-        System.out.println(v.calculerChemin("C"));
+        Dijkstra dijkstra=new Dijkstra();
+        System.out.println(dijkstra.resoudre(gl, "A"));
     }
 }
