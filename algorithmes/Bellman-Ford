@@ -7,7 +7,9 @@ fonction pointFixe(G InOut:Graphe, depart:Noeud)
         depart.distance <- 0
 
         cpt <- 0
-        tant que non pointfixe et cpt<nbSommets faire
+        vtmp <- null
+        tant que non egal(v, vtmp) et cpt<nbSommets faire
+            vtmp <- v.toString()
             pour chaque sommet v de G faire
                 pour chaque arc (u, v) de G faire
                     tmp <- u.distance + poids(u, v)
@@ -16,6 +18,7 @@ fonction pointFixe(G InOut:Graphe, depart:Noeud)
                         v.précédent <- u
                     fsi
                 fpour
+                cpt <- cpt+1
             fpour
         ftant
     fin
