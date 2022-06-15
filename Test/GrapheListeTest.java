@@ -65,6 +65,14 @@ class GrapheListeTest {
         gl.ajouterArc("D", "C", 10);
         gl.ajouterArc("D", "B", 23);
         gl.ajouterArc("E", "D", 43);
+        String sommet_A = gl.listeNoeuds().get(0);
+        String sommet_B = gl.suivants(sommet_A).get(0).getDest();
+
+        //on vérifie pour si l'arc(A,B) existe
+        assertEquals("A", sommet_A);
+        assertEquals("B", sommet_B);
+
+        //on vérifie le graphe
         String res = "A -> B(12) D(87) \n" +
                 "B -> E(11) \n" +
                 "D -> C(10) B(23) \n" +
@@ -101,6 +109,7 @@ class GrapheListeTest {
         Valeur v = bellmanFord.resoudre(gl, "A");
         ArrayList<String> expected = new ArrayList<String>(Arrays.asList("A", "B", "E", "D", "C"));
         ArrayList<String> res = (ArrayList<String>) v.calculerChemin("C");
+
         //on test si le chemin est bien le même que celui on a trouvé
         assertTrue(expected.equals(res));
     }
@@ -115,6 +124,7 @@ class GrapheListeTest {
         Valeur v = new Valeur();
         v.setValeur("A", 32);
         v.setValeur("B", 12);
+
         //on test la méthode rechercheMin retourne bien la valeur la plus petite
         String res = dijkstra.rechercheMin(noeud, v);
         assertEquals("B", res);
