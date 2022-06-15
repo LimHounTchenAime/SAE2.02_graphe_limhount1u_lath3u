@@ -44,13 +44,6 @@ public class GrapheListe implements Graphe {
         }
     }
 
-    /**
-     * methode qui permet de generer un graphe automatiquement en precisant le nombre de noeuds
-     *
-     * @param nbNoeuds nombre de noeuds
-     * @return graphe
-     */
-
 
     public List<Noeud> getEnsNoeuds() {
         return ensNoeuds;

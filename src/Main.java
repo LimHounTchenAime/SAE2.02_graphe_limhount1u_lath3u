@@ -13,8 +13,9 @@ public class Main {
 
         System.out.println(gl);
 
-        BellmanFord bellmanFord=new BellmanFord();
-
-        System.out.println(bellmanFord.resoudre(gl, "A"));
+        BellmanFord bellmanFord = new BellmanFord();
+        Valeur v = bellmanFord.resoudre(gl, "A");
+        System.out.println(v.toString());
+        System.out.println(v.calculerChemin("C"));
     }
 }
