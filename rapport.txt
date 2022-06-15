@@ -151,7 +151,7 @@ Validation et experimentation
 
 
     Question 22:
-        L'algorithme de Bellman Ford est plus rapide pour cett
+        L'algorithme de Bellman Ford est plus rapide s'il y a moins
 
 
     Question 23:

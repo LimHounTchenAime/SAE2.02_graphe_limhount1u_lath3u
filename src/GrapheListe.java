@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class GrapheListe implements Graphe {
     private List<String> ensNom = new ArrayList<String>();
@@ -160,6 +161,21 @@ public class GrapheListe implements Graphe {
         }
         res += "}";
 
+        return res;
+    }
+
+    /**
+     * methode qui permet de generer un graphe automatiquement en precisant le nombre de noeuds
+     * @param nbNoeuds nombre de noeuds
+     * @return graphe
+     */
+    public static GrapheListe genererGraphe(int nbNoeuds){
+        GrapheListe res=new GrapheListe();
+        Random random=new Random();
+        res.ajouterArc("0", "1", random.nextInt (  1, 100));
+        for (int i=1;i<nbNoeuds;i++){
+            res.ajouterArc(Integer.toString(random.nextInt(0, i)), Integer.toString (i), random.nextInt (  1, 100));
+        }
         return res;
     }
 
