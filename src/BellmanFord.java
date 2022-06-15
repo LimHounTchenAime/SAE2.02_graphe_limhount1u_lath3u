@@ -47,7 +47,7 @@ public class BellmanFord implements Algorithme{
             }
             cpt++;
         }
-        System.out.println(cpt);
+        System.out.println("nbIteration Bellman-Ford : " + cpt);
         return v;
     }
 
