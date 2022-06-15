@@ -13,7 +13,7 @@ public class Main {
 
         System.out.println(gl.suivants("D").get(0).getDest());
         System.out.println(gl.toGraphviz());
-        GrapheListe grapheListe = new GrapheListe("graphes/test1.txt");
+        GrapheListe grapheListe = new GrapheListe("graphes/graphe_exemple1.txt");
         System.out.println(grapheListe.toString());
 
         Dijkstra dijkstra = new Dijkstra();
