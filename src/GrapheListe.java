@@ -166,15 +166,22 @@ public class GrapheListe implements Graphe {
 
     /**
      * methode qui permet de generer un graphe automatiquement en precisant le nombre de noeuds
+     *
      * @param nbNoeuds nombre de noeuds
      * @return graphe
      */
-    public static GrapheListe genererGraphe(int nbNoeuds){
-        GrapheListe res=new GrapheListe();
-        Random random=new Random();
-        res.ajouterArc("0", "1", random.nextInt (  1, 100));
-        for (int i=1;i<nbNoeuds;i++){
-            res.ajouterArc(Integer.toString(random.nextInt(0, i)), Integer.toString (i), random.nextInt (  1, 100));
+    public static GrapheListe genererGraphe(int nbNoeuds) {
+        GrapheListe res = new GrapheListe();
+        Random random = new Random();
+        res.ajouterArc("n0", "n1", random.nextInt(1, 100));
+        for (int i = 2; i < nbNoeuds; i++) {
+            res.ajouterArc("n" + Integer.toString(i-1), "n" + Integer.toString(i), random.nextInt(1, 100));
+            if (random.nextInt(0, 100) <= 50) {
+                int j= random.nextInt(0, nbNoeuds);
+                while(j>nbNoeuds || j==i)
+                    j=random.nextInt(i, nbNoeuds);
+                res.ajouterArc("n" + Integer.toString(i - 1), "n" + Integer.toString(j), random.nextInt(1, 100));
+            }
         }
         return res;
     }

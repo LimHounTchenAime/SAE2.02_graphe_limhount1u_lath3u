@@ -11,6 +11,8 @@ public class Main {
         gl.ajouterArc("D", "B", 23);
         gl.ajouterArc("E", "D", 43);
 
+        System.out.println(gl);
+
         BellmanFord bellmanFord=new BellmanFord();
 
         System.out.println(bellmanFord.resoudre(gl, "A"));
