@@ -47,7 +47,7 @@ public class Dijkstra implements Algorithme {
      * @param nbIteration nombre d'iteration de l'algorithme
      * @return Valeur
      */
-    public Valeur resoudre(Graphe g, String depart,int nbIteration) {
+    public Valeur resoudreNbIteration(Graphe g, String depart, int nbIteration) {
         Valeur v = new Valeur();
         ArrayList<String> Q = new ArrayList<String>();
         //initialisation

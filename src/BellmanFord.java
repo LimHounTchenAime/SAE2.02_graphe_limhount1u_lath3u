@@ -58,7 +58,7 @@ public class BellmanFord implements Algorithme{
      * @param nbIteration
      * @return
      */
-    public Valeur resoudre(Graphe g, String depart,int nbIteration) {
+    public Valeur resoudreNbIteration(Graphe g, String depart, int nbIteration) {
         Valeur v = new Valeur();
 
         //initialisation

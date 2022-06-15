@@ -106,4 +106,4 @@ Dijkstra : 6 itérations
 Bellman Ford : 3 itérations
 
 
-L'algorithme de Bellman Ford est plus rapide pour cett
+L'algorithme de Bellman Ford est plus rapide que celui de Dijkstra pour ce graphe
