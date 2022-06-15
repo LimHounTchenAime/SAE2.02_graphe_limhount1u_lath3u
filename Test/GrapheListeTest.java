@@ -110,7 +110,7 @@ class GrapheListeTest {
         ArrayList<String> expected = new ArrayList<String>(Arrays.asList("A", "B", "E", "D", "C"));
         ArrayList<String> res = (ArrayList<String>) v.calculerChemin("C");
 
-        //on test si le chemin est bien le même que celui on a trouvé
+        //on test si le chemin est bien le même que celui trouvé
         assertTrue(expected.equals(res));
     }
 
