@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class MainDijkstra {
     public static void main(String[] args) {
-        //• la lecture des graphes `a partir de fichiers texte ;
-        //• le calcul des chemins les plus courts pour des nœuds donn´es ;
-        //• l’affichage des chemins pour des nœuds donn´ees.
+        //• la lecture des graphes à partir de fichiers texte ;
+        //• le calcul des chemins les plus courts pour des nœuds donnés ;
+        //• l’affichage des chemins pour des nœuds donnés.
         Scanner sc = new Scanner(System.in);
         System.out.println("Quelle graphe ? (fichier texte)");
         GrapheListe gl = new GrapheListe(sc.next());
