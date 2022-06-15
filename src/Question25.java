@@ -1,8 +1,8 @@
 public class Question25 {
     public static void main(String[] args) {
         //genere des graphes de taille 10
-        GrapheListe grapheListe = GrapheListe.genererGraphe(3000);
-
+        GrapheListe grapheListe = GrapheListe.genererGraphe(4);
+        System.out.println(grapheListe.toGraphviz());
         //cherche le chemin minimum avec les deux algorithmes
         //On calcule la vitesse de Bellmandford
         Algorithme algorithme = new BellmanFord();
@@ -27,6 +27,7 @@ public class Question25 {
         }else {
             fast ="temps_Dijkstra";
         }
+
         System.out.println("Le plus rapide : " + fast);
     }
 }
