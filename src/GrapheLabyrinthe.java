@@ -1,22 +1,29 @@
-import java.util.ArrayList;
 import java.util.List;
 
-public class GrapheLabyrinthe implements Graphe{
+public class GrapheLabyrinthe implements Graphe {
     private Labyrinthe laby;
+    private Graphe g;
 
-    GrapheLabyrinthe(Labyrinthe l){
+    GrapheLabyrinthe(Labyrinthe l) {
         this.laby = l;
+        this.g = laby.genererGraphe();
     }
 
+    /**
+     * @return
+     */
     @Override
     public List<String> listeNoeuds() {
-        return null;
+        return g.listeNoeuds();
     }
 
+    /**
+     * @param n
+     * @return
+     */
     @Override
     public List<Arc> suivants(String n) {
-        List<Arc> res=new ArrayList<>();
-
-        return res;
+        return g.suivants(n);
     }
+
 }

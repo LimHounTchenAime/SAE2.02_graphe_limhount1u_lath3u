@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -21,7 +24,7 @@ class GrapheListeTest {
         assertEquals("A", gl.listeNoeuds().get(0));
         assertEquals(3, gl.listeNoeuds().size());
 
-        //
+        //on vérifie l'ajout de l'arc
         gl.ajouterArc("D", "C", 10);
         assertEquals(4, gl.listeNoeuds().size());
 
@@ -62,6 +65,14 @@ class GrapheListeTest {
         gl.ajouterArc("D", "C", 10);
         gl.ajouterArc("D", "B", 23);
         gl.ajouterArc("E", "D", 43);
+        String sommet_A = gl.listeNoeuds().get(0);
+        String sommet_B = gl.suivants(sommet_A).get(0).getDest();
+
+        //on vérifie pour si l'arc(A,B) existe
+        assertEquals("A", sommet_A);
+        assertEquals("B", sommet_B);
+
+        //on vérifie le graphe
         String res = "A -> B(12) D(87) \n" +
                 "B -> E(11) \n" +
                 "D -> C(10) B(23) \n" +
@@ -70,5 +81,52 @@ class GrapheListeTest {
 
         assertEquals(res, gl.toString());
     }
-//TODO methodre calculer chemin,methode resoudre bellman-ford
+
+    @Test
+    void testBellmanFord() {
+        GrapheListe gl = new GrapheListe("graphes/graphe_exemple1.txt");
+        BellmanFord bellmanFord = new BellmanFord();
+        Valeur v = bellmanFord.resoudre(gl, "A");
+        //on regarde si les valeurs trouve sont bien les mêmes que ceux calculées
+        assertEquals(0.0, v.getValeur("A"));
+        assertEquals(12.0, v.getValeur("B"));
+        assertEquals(76.0, v.getValeur("C"));
+        assertEquals(66.0, v.getValeur("D"));
+        assertEquals(23.0, v.getValeur("E"));
+
+        assertEquals(null, v.getParent("A"));
+        assertEquals("A", v.getParent("B"));
+        assertEquals("D", v.getParent("C"));
+        assertEquals("E", v.getParent("D"));
+        assertEquals("B", v.getParent("E"));
+
+    }
+
+    @Test
+    void testCalculerChemin() {
+        GrapheListe gl = new GrapheListe("graphes/graphe_exemple1.txt");
+        BellmanFord bellmanFord = new BellmanFord();
+        Valeur v = bellmanFord.resoudre(gl, "A");
+        ArrayList<String> expected = new ArrayList<String>(Arrays.asList("A", "B", "E", "D", "C"));
+        ArrayList<String> res = (ArrayList<String>) v.calculerChemin("C");
+
+        //on test si le chemin est bien le même que celui on a trouvé
+        assertTrue(expected.equals(res));
+    }
+
+    @Test
+    void testRechercherMin() {
+        Dijkstra dijkstra = new Dijkstra();
+        ArrayList<String> noeud = new ArrayList<String>();
+
+        noeud.add("A");
+        noeud.add("B");
+        Valeur v = new Valeur();
+        v.setValeur("A", 32);
+        v.setValeur("B", 12);
+
+        //on test la méthode rechercheMin retourne bien la valeur la plus petite
+        String res = dijkstra.rechercheMin(noeud, v);
+        assertEquals("B", res);
+    }
 }
