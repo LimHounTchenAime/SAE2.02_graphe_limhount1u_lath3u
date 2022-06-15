@@ -16,7 +16,7 @@ public class Question21 {
         BellmanFord bellmanFord = new BellmanFord();
         System.out.println("Bellman Ford:");
         for (int i = 0; i < nbIteration; i++) {
-            Valeur bellmanFord_iteration = bellmanFord.resoudre(gl,"A",i);
+            Valeur bellmanFord_iteration = bellmanFord.resoudreNbIteration(gl,"A",i);
             System.out.println("Iteration " + i + " : ");
             System.out.println(bellmanFord_iteration);
         }
