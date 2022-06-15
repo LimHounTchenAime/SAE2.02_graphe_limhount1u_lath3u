@@ -21,12 +21,15 @@ public class Dijkstra implements Algorithme {
         v.setValeur(depart, 0); //A.distance <- 0
 
         //Tant que Q est un ensemble non vide faire
+        int cpt=0;
+        int tmpcpt=0;
         while (!Q.isEmpty()) {
             String sommet_u = rechercheMin(Q, v); //u <- un sommet de Q telle que u.distance est minimale
             Q.remove(sommet_u); //Q <- Q \ {u} // enlever le sommet u de la liste Q
             //Pour chaque sommet_v de Q tel que l'arc(u,v) existe
             for (int i = 0; i < g.suivants(sommet_u).size(); i++) {
                 String sommet_v = g.suivants(sommet_u).get(i).getDest();
+                tmpcpt++;
                 if (Q.contains(sommet_v)) {
                     double poids_arc_uv = g.suivants(sommet_u).get(i).getCout();
                     //D <- u.distance + poids(u,v)
@@ -40,9 +43,10 @@ public class Dijkstra implements Algorithme {
                     }
                 }
             }
-
+            cpt++;
         }
-
+        System.out.println("nbIteration Dijkstra : "+cpt);
+        System.out.println(tmpcpt);
         return v;
     }
 

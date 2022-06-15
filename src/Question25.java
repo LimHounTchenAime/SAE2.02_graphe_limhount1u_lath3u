@@ -1,7 +1,7 @@
 public class Question25 {
     public static void main(String[] args) {
         //genere des graphes de taille 10
-        GrapheListe grapheListe = GrapheListe.genererGraphe(3000);
+        GrapheListe grapheListe = GrapheListe.genererGraphe(1000);
 
         //cherche le chemin minimum avec les deux algorithmes
         //On calcule la vitesse de Bellmandford
@@ -11,7 +11,7 @@ public class Question25 {
         long endTime = System.nanoTime();
         long temps_BellmanFord = (endTime - startTime);
         System.out.println("BellmanFord : " + temps_BellmanFord);
-
+        System.out.println(v);
 
         //On calcule la vitesse de Dijkstra
         algorithme = new Dijkstra();
@@ -20,6 +20,7 @@ public class Question25 {
         endTime = System.nanoTime();
         long temps_Dijkstra= (endTime - startTime);
         System.out.println("Dijkstra : " +  temps_Dijkstra);
+        System.out.println(v);
 
         String fast;
         if(temps_Dijkstra>temps_BellmanFord){

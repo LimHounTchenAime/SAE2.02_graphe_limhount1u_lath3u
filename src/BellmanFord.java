@@ -29,8 +29,10 @@ public class BellmanFord implements Algorithme{
             //pour chaque sommet v de G faire
             for (int i = 0; i < sommets.size(); i++) {
                 String sommet_u = g.listeNoeuds().get(i);
+
                 //pour chaque arc (u, v) de G faire
                 for (int k = 0; k < g.suivants(sommet_u).size(); k++) {
+
                     //sommet_u est un antécédent de sommet_v
                     String sommet_v = g.suivants(sommet_u).get(k).getDest(); //on a récupéré l'arc(u,v)
 
@@ -76,13 +78,17 @@ public class BellmanFord implements Algorithme{
         String vtmp = null;
         //tant que non point fixe
         int cpt = 0;
+
         while (!v.toString().equals(vtmp) && cpt < nbIteration) {
             vtmp = v.toString();
             //pour chaque sommet
             for (int i = 0; i < sommets.size(); i++) {
+
                 String sommet_u = g.listeNoeuds().get(i);
+
                 //pour chaque arc du sommet_u
                 for (int k = 0; k < g.suivants(sommet_u).size(); k++) {
+
                     //sommet_u est un antécédent de sommet_v
                     String sommet_v = g.suivants(sommet_u).get(k).getDest();
                     //on prend la valeur d'un des arcs partant de u
