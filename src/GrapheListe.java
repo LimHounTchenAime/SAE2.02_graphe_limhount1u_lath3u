@@ -171,18 +171,24 @@ public class GrapheListe implements Graphe {
      * @return graphe
      */
     public static GrapheListe genererGraphe(int nbNoeuds) {
+        //graphe a renvoyer
         GrapheListe res = new GrapheListe();
+        //utilisation de random
         Random random = new Random();
-        res.ajouterArc("n0", "n1", random.nextInt(1, 100));
-        for (int i = 2; i < nbNoeuds; i++) {
-            res.ajouterArc("n" + Integer.toString(i-1), "n" + Integer.toString(i), random.nextInt(1, 100));
-            if (random.nextInt(0, 100) <= 50) {
-                int j= random.nextInt(0, nbNoeuds);
-                while(j>nbNoeuds || j==i)
-                    j=random.nextInt(i, nbNoeuds);
-                res.ajouterArc("n" + Integer.toString(i - 1), "n" + Integer.toString(j), random.nextInt(1, 100));
+
+        //pour chaque noeud du graphe souhaite
+        for (int i = 1; i < nbNoeuds; i++) {
+            //on connecte le noeud actuel au noeud suivant avec un poids entre 1 et 100
+            res.ajouterArc("n" + Integer.toString(i), "n" + Integer.toString(i+1), random.nextInt(1, 100));
+            //il y a 50% de chances de connecter le noeud actuel a n'importe quel noeud du graphe excepte le noeud suivant meme avec un poids entre 1 et 100
+            if (random.nextInt(1, 100) <= 50) {
+                int j= random.nextInt(1, nbNoeuds);
+                while(j==i+1)
+                    j=random.nextInt(1, nbNoeuds);
+                res.ajouterArc("n" + Integer.toString(i), "n" + Integer.toString(j), random.nextInt(1, 100));
             }
         }
+        //on retourne le graphe
         return res;
     }
 

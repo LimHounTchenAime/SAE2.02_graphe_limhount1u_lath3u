@@ -47,6 +47,7 @@ public class BellmanFord implements Algorithme{
             }
             cpt++;
         }
+        System.out.println(cpt);
         return v;
     }
 

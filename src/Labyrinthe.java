@@ -1,5 +1,3 @@
-package laby;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -183,5 +181,36 @@ public class Labyrinthe {
     public boolean getMur(int x, int y) {
         // utilise le tableau de boolean
         return this.murs[x][y];
+    }
+
+    /**
+     * permet de generer un graphe a partir du labyrinthe
+     * @return graphe
+     */
+    public GrapheListe genererGraphe(){
+        //graphe a renvoyer
+        GrapheListe res=new GrapheListe();
+        //boucle allant de la case 1 a la case tailleY du labyrinthe -1
+        for(int i=1;i<this.murs[0].length-1;i++)
+            //boucle allant de la case 1 a la case tailleX du labyrinthe -1
+            for (int j=1;j<this.murs.length-1;j++){
+                //s'il n'y pas de mur aux position j, i (x, y)
+                if(!getMur(j, i)) {
+                    //si on arrive a se deplacer a droite, on ajoute un arc correspondant
+                    if (deplacerPerso(j, i, DROITE)[0]!=j)
+                        res.ajouterArc("(" + (j-1) + ", " + (i-1) + ")", "(" + j + ", " + (i-1) + ")", 1);
+                    //si on arrive a se deplacer a gauche, on ajoute un arc correspondant
+                    if(deplacerPerso(j, i, GAUCHE)[0]!=j)
+                        res.ajouterArc("(" + (j-1) + ", " + (i-1) + ")", "(" + (j-2) + ", " + (i-1) + ")", 1);
+                    //si on arrive a se deplacer en bas, on ajoute un arc correspondant
+                    if(deplacerPerso(j, i, BAS)[1]!=i)
+                        res.ajouterArc("(" + (j-1) + ", " + (i-1) + ")", "(" + (j-1) + ", " + i + ")", 1);
+                    //si on arrive a se deplacer en haut, on ajoute un arc correspondant
+                    if(deplacerPerso(j, i, HAUT)[1]!=i)
+                        res.ajouterArc("(" + (j-1) + ", " + (i-1) + ")", "(" + (j-1) + ", " + (i-2) + ")", 1);
+                }
+            }
+        //on renvoie le graphe correspondant
+        return res;
     }
 }
