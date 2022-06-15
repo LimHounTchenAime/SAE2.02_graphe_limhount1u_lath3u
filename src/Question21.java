@@ -8,7 +8,7 @@ public class Question21 {
 
         System.out.println("Dijkstra: ");
         for (int i = 0; i < nbIteration; i++) {
-            Valeur dijkstra_iteration = dijkstra.resoudre(gl, "A", i);
+            Valeur dijkstra_iteration = dijkstra.resoudreNbIteration(gl, "A", i);
             System.out.println("Iteration " + i + " : ");
             System.out.println(dijkstra_iteration);
         }
