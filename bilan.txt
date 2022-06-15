@@ -1,5 +1,6 @@
 Question 21 :
 
+08 p:null
 Dijkstra:
 Iteration 0 :
 A ->  V:0.0 p:null
@@ -17,8 +18,7 @@ C ->  V:1.7976931348623157E308 p:null
 D ->  V:3.0 p:A
 E ->  V:1.7976931348623157E308 p:null
 F ->  V:1.7976931348623157E308 p:null
-G ->  V:1.7976931348623157E308 p:null
-
+G ->  V:1.7976931348623157E3
 Iteration 2 :
 A ->  V:0.0 p:null
 B ->  V:20.0 p:A
