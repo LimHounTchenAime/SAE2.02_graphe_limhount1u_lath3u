@@ -29,7 +29,7 @@ class GrapheListeTest {
     }
 
     @Test
-    void TesttoGraphViz() {
+    void TestToGraphViz() {
         GrapheListe gl = new GrapheListe();
         gl.ajouterArc("A", "B", 12);
         gl.ajouterArc("A", "D", 87);
@@ -53,7 +53,7 @@ class GrapheListeTest {
     }
 
     @Test
-    void TesttoString() {
+    void TestToString() {
         GrapheListe gl = new GrapheListe();
         gl.ajouterArc("A", "B", 12);
         gl.ajouterArc("A", "D", 87);

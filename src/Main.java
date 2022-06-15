@@ -15,11 +15,10 @@ public class Main {
         System.out.println(gl.toGraphviz());
         GrapheListe grapheListe = new GrapheListe("graphes/graphe_exemple1.txt");
         System.out.println(grapheListe.toString());
-
         Dijkstra dijkstra = new Dijkstra();
         Valeur v = dijkstra.resoudre(gl, "A");
         System.out.println(v.toString());
-        System.out.println(v.calculerChemin("C"));
+
 
 
     }
