@@ -1,0 +1,74 @@
+Représentation graphique
+    Question 11:
+        On a ajouté comme tests :
+
+Calcul du plus court chemin par point fixe
+    Question 13:
+        fonction pointFixe(G InOut:Graphe, depart:Noeud)
+            debut
+                pour chaque sommet v de G faire
+                    v.distance <- infini
+                    v.précédent <- indéfini
+                fpour
+                depart.distance <- 0
+
+                cpt <- 0
+                vtmp <- null
+                tant que non egal(v, vtmp) et cpt<nbSommets faire
+                    vtmp <- v.toString()
+                    pour chaque sommet v de G faire
+                        pour chaque arc (u, v) de G faire
+                            tmp <- u.distance + poids(u, v)
+                            si tmp < v.distance alors
+                                v.distance <- tmp
+                                v.précédent <- u
+                            fsi
+                        fpour
+                        cpt <- cpt+1
+                    fpour
+                ftant
+            fin
+
+        LEXIQUE:
+        G : Graphe, graphe orienté avec poids positive des arcs
+        depart : Noeud, un sommet de G
+        cpt : entier, nombre d'itérations
+        nbSommets : entier, nombre de sommets du graphe G
+
+    Question 15:
+        Résultat de la méthode résoudre ....
+
+Validation et experimentation
+    Question 21:
+        ...
+        La méthode Dijkstra cherche le chemin minimum de chaque sommet alors que la méthode Bellman-Ford regarde le cout minimum en additionnant les antécédants des
+        sommets.
+
+
+    Question 22:
+        La méthode Dijkstra est plus rapide que la méthode Bellman-Ford car la méthode Dijkstra trouve un chemin minimal par itération alors que la méthode
+        Bellman-Ford en a besoin de plusieurs et doit faire une itération supplémentaire pour s'arrêter (atteindre le point fixe)
+
+    Question 23:
+        L'algorithme de Dijkstra semble plus efficace et plus rapide que l'algorithme de Bellman-Ford
+
+    Question 24:
+        Cho
+
+    Question 25:
+        Graphes.toGraphiz
+
+    Question 26:
+        Comparaison performances des algorithmes en fonction de la taille du graphhe
+
+    Question 27:
+        Le ratio de performance entre les deux algortihmes en fonction du nombre de noeuds.
+
+    Question 28:
+        On peut en conclure que ...
+
+Extension : Intelligence Artificielle et labyrinthe
+    Question 30:
+
+    Question 31:
+        Chemin le plus court :
