@@ -3,6 +3,5 @@ public class test {
         GrapheListe grapheListe=GrapheListe.genererGraphe(100);
         System.out.println(grapheListe.toGraphviz());
 
-        System.out.println();
     }
 }
