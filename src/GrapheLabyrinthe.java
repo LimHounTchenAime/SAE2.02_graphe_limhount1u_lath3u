@@ -4,6 +4,10 @@ public class GrapheLabyrinthe implements Graphe {
     private Labyrinthe laby;
     private Graphe g;
 
+    /**
+     * Construit un graphe depuis un labyrinthe
+     * @param l Labyrinthe
+     */
     GrapheLabyrinthe(Labyrinthe l) {
         this.laby = l;
         this.g = laby.genererGraphe();
