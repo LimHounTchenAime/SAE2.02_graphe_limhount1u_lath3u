@@ -6,9 +6,11 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DijkstraTest {
-
+    /**
+     * Méthode de test de la méthode résoude de Dijkstra
+     */
     @Test
-    void resoudre() {
+    void resoudreTest() {
         //creation du graphe avec les donnees du sujet
         GrapheListe gl = new GrapheListe();
 
@@ -49,8 +51,11 @@ class DijkstraTest {
 
     }
 
+    /**
+     * Méthode de test de la méthode rechercherMin
+     */
     @Test
-    void testRechercherMin() {
+    void testRechercherMinTest() {
         Dijkstra dijkstra = new Dijkstra();
         ArrayList<String> noeud = new ArrayList<String>();
 
