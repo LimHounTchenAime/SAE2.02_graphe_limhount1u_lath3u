@@ -83,26 +83,6 @@ class GrapheListeTest {
     }
 
     @Test
-    void testBellmanFord() {
-        GrapheListe gl = new GrapheListe("graphes/graphe_exemple1.txt");
-        BellmanFord bellmanFord = new BellmanFord();
-        Valeur v = bellmanFord.resoudre(gl, "A");
-        //on regarde si les valeurs trouve sont bien les mêmes que ceux calculées
-        assertEquals(0.0, v.getValeur("A"));
-        assertEquals(12.0, v.getValeur("B"));
-        assertEquals(76.0, v.getValeur("C"));
-        assertEquals(66.0, v.getValeur("D"));
-        assertEquals(23.0, v.getValeur("E"));
-
-        assertEquals(null, v.getParent("A"));
-        assertEquals("A", v.getParent("B"));
-        assertEquals("D", v.getParent("C"));
-        assertEquals("E", v.getParent("D"));
-        assertEquals("B", v.getParent("E"));
-
-    }
-
-    @Test
     void testCalculerChemin() {
         GrapheListe gl = new GrapheListe("graphes/graphe_exemple1.txt");
         BellmanFord bellmanFord = new BellmanFord();
@@ -114,19 +94,5 @@ class GrapheListeTest {
         assertTrue(expected.equals(res));
     }
 
-    @Test
-    void testRechercherMin() {
-        Dijkstra dijkstra = new Dijkstra();
-        ArrayList<String> noeud = new ArrayList<String>();
 
-        noeud.add("A");
-        noeud.add("B");
-        Valeur v = new Valeur();
-        v.setValeur("A", 32);
-        v.setValeur("B", 12);
-
-        //on test la méthode rechercheMin retourne bien la valeur la plus petite
-        String res = dijkstra.rechercheMin(noeud, v);
-        assertEquals("B", res);
-    }
 }
