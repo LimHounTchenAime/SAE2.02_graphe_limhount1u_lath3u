@@ -12,11 +12,12 @@ public class BellmanFord implements Algorithme{
         Valeur v = new Valeur();
 
         //initialisation
+        //pour chaque sommet v de G faire
         for (int i = 0; i < g.listeNoeuds().size(); i++) {
-            v.setValeur(g.listeNoeuds().get(i), Double.MAX_VALUE);
-            v.setParent(g.listeNoeuds().get(i), null);
+            v.setValeur(g.listeNoeuds().get(i), Double.MAX_VALUE); //v.distance <- infini
+            v.setParent(g.listeNoeuds().get(i), null); //v.précédent <- indéfini
         }
-        v.setValeur(depart, 0);
+        v.setValeur(depart, 0);//depart.distance <- 0
 
         //début
         List<String> sommets = g.listeNoeuds();
