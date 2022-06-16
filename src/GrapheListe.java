@@ -23,18 +23,38 @@ public class GrapheListe implements Graphe {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(nom));
             String line;
-            while ((line = bufferedReader.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null && !line.isEmpty()) {
 
+
+                String depart="";
+
+                String arrivee="";
 
                 String poids = "";
 
-                int i = 4;
-                while (i < line.length()) {
-                    poids += line.charAt(i);
+                int i = 0;
+
+                for (int j=0;j<3;j++) {
+                    String tmp="";
+                    while (i<line.length() && line.charAt(i) != '\t' && line.charAt(i) != ' ') {
+                        tmp += line.charAt(i);
+                        i++;
+                    }
                     i++;
+                    switch (j){
+                        case 0:
+                            depart=tmp;
+                            break;
+                        case 1:
+                            arrivee=tmp;
+                            break;
+                        case 2:
+                            poids=tmp;
+                            break;
+                    }
                 }
 
-                ajouterArc(Character.toString(line.charAt(0)), Character.toString(line.charAt(2)), Double.parseDouble(poids));
+                ajouterArc(depart, arrivee, Double.parseDouble(poids));
 
             }
         } catch (FileNotFoundException fileNotFoundException) {
