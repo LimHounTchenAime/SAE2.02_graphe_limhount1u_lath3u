@@ -6,6 +6,7 @@ public class GrapheLabyrinthe implements Graphe {
 
     /**
      * Construit un graphe depuis un labyrinthe
+     *
      * @param l Labyrinthe
      */
     GrapheLabyrinthe(Labyrinthe l) {
@@ -14,6 +15,8 @@ public class GrapheLabyrinthe implements Graphe {
     }
 
     /**
+     * retoune la liste de noeuds
+     *
      * @return
      */
     @Override
@@ -22,6 +25,9 @@ public class GrapheLabyrinthe implements Graphe {
     }
 
     /**
+     * retourne la liste des arcs partant
+     * du nœud n passe en parametre
+     *
      * @param n
      * @return
      */
