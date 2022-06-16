@@ -4,7 +4,7 @@ public class Question25 {
         GrapheListe grapheListe = GrapheListe.genererGraphe(3000);
 
         //cherche le chemin minimum avec les deux algorithmes
-        //On calcule la vitesse de Bellmandford
+        //On chronomètre la vitesse de Bellmandford
         Algorithme algorithme = new BellmanFord();
         long startTime = System.nanoTime();
         Valeur v = algorithme.resoudre(grapheListe, "n1");
@@ -13,7 +13,7 @@ public class Question25 {
         System.out.println("BellmanFord : " + temps_BellmanFord);
         System.out.println(v);
 
-        //On calcule la vitesse de Dijkstra
+        //On chronomètre la vitesse de Dijkstra
         algorithme = new Dijkstra();
         startTime = System.nanoTime();
         v = algorithme.resoudre(grapheListe, "n1");
